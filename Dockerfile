@@ -20,7 +20,7 @@ RUN apt-get update \
         libpq-dev \
     && rm -rf /var/lib/apt/lists/*
 
-RUN pip install numpy
+RUN pip install numpy flask
 
 WORKDIR /
 ENV OPENCV_VERSION="4.5.0"
@@ -52,3 +52,12 @@ RUN ln -s \
   /usr/local/python/cv2/python-3.9/cv2.cpython-37m-x86_64-linux-gnu.so \
   /usr/local/lib/python3.9/site-packages/cv2.so
 
+
+WORKDIR /app
+
+COPY /app /
+
+
+ENTRYPOINT ["python"]
+
+CMD ["app"]
