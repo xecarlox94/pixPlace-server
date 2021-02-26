@@ -27,5 +27,6 @@ def hello_world():
 
 
 if __name__ == '__main__':
+    app.debug = False
     http_server = WSGIServer((os.environ.get("APP_PORT", default='0.0.0.0'), 5000), app)
     http_server.serve_forever()
