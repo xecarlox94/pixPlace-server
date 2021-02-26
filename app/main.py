@@ -27,5 +27,5 @@ def hello_world():
 
 
 if __name__ == '__main__':
-    app.debg = False
+    app.debug = True
     app.run(host=os.environ.get("APP_PORT", default='0.0.0.0'), port=5000)
