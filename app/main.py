@@ -1,4 +1,5 @@
 from flask import Flask, request, Response
+import os
 import io
 import numpy as np
 import cv2
@@ -26,4 +27,5 @@ def hello_world():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0')
+    app.debg = False
+    app.run(host=os.environ.get("APP_PORT", default='0.0.0.0'), port=5000)
