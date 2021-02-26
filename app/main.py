@@ -3,7 +3,7 @@ import os
 import io
 import numpy as np
 import cv2
-
+from gevent.pywsgi import WSGIServer
 
 import faceblur as f_blur
 
@@ -27,5 +27,5 @@ def hello_world():
 
 
 if __name__ == '__main__':
-    app.debug = True
-    app.run(host=os.environ.get("APP_PORT", default='0.0.0.0'), port=5000)
+    http_server = WSGIServer((os.environ.get("APP_PORT", default='0.0.0.0'), 5000), app)
+    http_server.serve_forever()
