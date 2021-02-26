@@ -1,14 +1,14 @@
 import cv2
 
+import numpy as np
 
-pic = 'p.jpg'
 
-def process_img(f):
+
+def process_img(img):
     # Load the cascade
     face_cascade = cv2.CascadeClassifier('mldata.xml')
 
-    # Read the input image
-    img = cv2.imread(f)
+    img = cv2.imdecode(img, flags=1)
 
     # Convert into grayscale
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -26,9 +26,5 @@ def process_img(f):
         blur = cv2.GaussianBlur(face_color, (51, 51), 0)
         img[y:y + h, x:x + w] = blur
 
-    cv2.imwrite('test.jpg', img)
+    return img
 
-
-
-
-process_img(pic)

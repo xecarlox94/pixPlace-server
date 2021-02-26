@@ -53,11 +53,12 @@ RUN ln -s \
   /usr/local/lib/python3.9/site-packages/cv2.so
 
 
+COPY /app /app
+
 WORKDIR /app
 
-COPY /app /
+ENTRYPOINT ["python3"]
 
 
-ENTRYPOINT ["python"]
+CMD ["main.py"]
 
-CMD ["app"]
