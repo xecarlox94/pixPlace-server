@@ -1,10 +1,18 @@
 import cv2
-
+import io
 import numpy as np
 
 
 
 def process_img(img):
+    img = blur_faces(img)
+
+    img = cv2.imencode('.jpg',img)[1].tobytes()
+
+    return img
+
+
+def blur_faces(img):
     # Load the cascade
     face_cascade = cv2.CascadeClassifier('mldata.xml')
 
@@ -28,3 +36,15 @@ def process_img(img):
 
     return img
 
+
+
+def proc_req_img(request):
+    image = request.files["image"]
+
+    in_memory_file = io.BytesIO()
+
+    image.save(in_memory_file)
+
+    image = np.frombuffer(in_memory_file.getvalue(), dtype=np.uint8)
+
+    return process_img(image)
