@@ -4,12 +4,6 @@ import numpy as np
 
 
 
-def process_img(img):
-    img = blur_faces(img)
-
-    img = cv2.imencode('.jpg',img)[1].tobytes()
-
-    return img
 
 
 def blur_faces(img):
@@ -47,4 +41,11 @@ def proc_req_img(request):
 
     image = np.frombuffer(in_memory_file.getvalue(), dtype=np.uint8)
 
-    return process_img(image)
+    return  encode_img(image)
+
+def encode_img(img):
+    img = blur_faces(img)
+
+    img = cv2.imencode('.jpg',img)[1].tobytes()
+
+    return img
