@@ -1,2 +1,3 @@
-sudo docker build -t faceblur .
+sudo docker build -t xecarlox94/faceblur .
 
+sudo docker image ls

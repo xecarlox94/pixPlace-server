@@ -10,7 +10,7 @@ def blur_faces(img):
     # Load the cascade
     face_cascade = cv2.CascadeClassifier('mldata.xml')
 
-    img = cv2.imdecode(img, flags=1)
+    #img = cv2.imdecode(img, flags=1)
 
     # Convert into grayscale
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
