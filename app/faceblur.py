@@ -20,8 +20,6 @@ def blur_faces(img):
 
     # Draw rectangle around the faces
     for (x, y, w, h) in faces:
-        # Enclose inside a blue rectangular box
-#        cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),3)
         # Select only detected face portion for Blur
         face_color = img[y:y + h, x:x + w]
         # Blur the Face with Gaussian Blur of Kernel Size 51*51
@@ -43,7 +41,7 @@ def proc_req_img(request):
 
     return  encode_img(image)
 
-def encode_img(img):
+def enc_faceblur(img):
     img = blur_faces(img)
 
     img = cv2.imencode('.jpg',img)[1].tobytes()

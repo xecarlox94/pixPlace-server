@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 @app.route('/', methods=['POST'])
 def main():
-    image = f_blur.proc_req_img(image)
+    image = f_blur.enc_faceblur(image)
 
     return Response(b'--frame\r\n' b'Content-Type: image/jpeg\r\n\r\n' + image + b'\r\n\r\n', mimetype='multipart/x-mixed-replace; boundary=frame')
 
